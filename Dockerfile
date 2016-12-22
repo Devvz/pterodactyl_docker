@@ -7,12 +7,13 @@ RUN apt-get update && apt-get install -y \
         libpng12-dev \
         libxml2-dev \
         libcurl4-openssl-dev \
+        unzip \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd opcache pdo mbstring tokenizer bcmath xml
+    && docker-php-ext-install -j$(nproc) gd opcache pdo mbstring tokenizer bcmath
 
-# COPY ./files /
-# WORKDIR /srv/web
+#COPY ./files /
+#WORKDIR /srv/web
 
 #RUN curl -Lo v0.5.5.tar.gz https://github.com/Pterodactyl/Panel/archive/v0.5.5.tar.gz \
 # && tar --strip-components=1 -xzvf v0.5.5.tar.gz \
